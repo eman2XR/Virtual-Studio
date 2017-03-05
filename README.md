@@ -1,1 +1,1 @@
-# subsemnautl.github.io
+# subsemnatul.github.io
