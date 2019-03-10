@@ -1,0 +1,16 @@
+# This file uses centimeters as units for non-parametric coordinates.
+
+mtllib flat_brush.mtl
+g default
+v 0.023510 0.000000 0.023510
+v -0.023510 0.000000 -0.023510
+v 0.023508 0.000000 0.023239
+vt 0.000000 1.000000
+vt 1.000000 0.000000
+vt 1.000000 1.000000
+vn 0.000000 1.000000 0.000000
+vn 0.000000 1.000000 0.000000
+vn 0.000000 1.000000 0.000000
+s off
+g initialShadingGroup pPlane1
+f 2/1/1 1/2/2 3/3/3
