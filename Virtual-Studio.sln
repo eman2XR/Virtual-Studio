@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtual-Studio", "Virtual-Studio.csproj", "{0DB7CAC6-AC3C-E6F2-3A2A-CF214CA2ABAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtual-Studio.Editor", "Virtual-Studio.Editor.csproj", "{4A5BC0D5-A672-4C96-59C9-649885582B1E}"
