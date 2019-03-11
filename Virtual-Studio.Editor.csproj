@@ -322,7 +322,7 @@
     <None Include="Assets\Virtual Studio\MeshExtrusion\Shaders\Wireframe Functions.cginc" />
     <None Include="Assets\Virtual Studio\MeshExtrusion\Shaders\Wireframe.shader" />
     <None Include="Assets\Virtual Studio\MeshExtrusion\Shaders\WireframeOutline.shader" />
-    <None Include="Assets\Virtual Studio\Resources\VRTK_OutlineBasic.shader" />
+    <None Include="Assets\Virtual Studio\Resources\OutlineBasic.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
