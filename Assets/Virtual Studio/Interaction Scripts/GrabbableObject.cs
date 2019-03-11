@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabbableObject : MonoBehaviour {
+public class GrabbableObject : MonoBehaviour
+{
+    public bool outlineOnTouch = true;
+    public Material outlineMaterial;
 
     public delegate void OnObjectGrabbed();
     public OnObjectGrabbed objectGrabbedEvent;
@@ -14,7 +17,41 @@ public class GrabbableObject : MonoBehaviour {
     [HideInInspector]
     public bool isGrabbedByRightHand;
 
-   
+    GameObject highlightModel;
+    bool highLightModelCreated;
+
+    public void Touched(GameObject controller)
+    {
+        if (outlineOnTouch)
+        {
+            foreach (Transform trans in this.GetComponentInChildren<Transform>())
+            {
+                if (trans.GetComponent<MeshFilter>())
+                {
+                    if (!highLightModelCreated)
+                    {
+                        highLightModelCreated = true;
+                        highlightModel = Instantiate(trans.gameObject, trans);
+                        if (!outlineMaterial)
+                            outlineMaterial = Resources.Load("Outline.mat", typeof(Material)) as Material;
+                        highlightModel.GetComponent<Renderer>().material = outlineMaterial;
+                    }
+                    if (highlightModel.GetComponent<Collider>())
+                        Destroy(highlightModel.GetComponent<Collider>());
+                }
+            }
+        }
+    }
+
+    public void UnTouched(GameObject controller)
+    {
+        if (outlineOnTouch)
+        {
+            Destroy(highlightModel);
+            highLightModelCreated = false;
+        }
+    }
+
     public void Grabbed(GameObject controller)
     {
         if (controller.name == "Controller (left)")

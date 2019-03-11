@@ -15,27 +15,41 @@ public class SteamVRObjectGrab : MonoBehaviour
         }
     }
 
+    bool touched;
+
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
 
-     GameObject collidingObject;//To keep track of what objects have rigidbodies
-     GameObject objectInHand;//To track the object you're holding
+    GameObject collidingObject;//To keep track of what objects have rigidbodies
+    GameObject objectInHand;//To track the object you're holding
 
     void OnTriggerEnter(Collider other)//Activate function in trigger zone, checking rigidbodies and ignoring if no rigidbodies 
     {
-        if (other.GetComponentInParent<GrabbableObject>())
+        if (!touched)
         {
-            collidingObject = other.transform.parent.gameObject;
-            initialParent = collidingObject.transform.parent;
+            touched = true;
+            if (other.GetComponentInParent<GrabbableObject>())
+            {
+                collidingObject = other.transform.parent.gameObject;
+                initialParent = collidingObject.transform.parent;
+                collidingObject.GetComponent<GrabbableObject>().Touched(this.gameObject);
+            }
         }
-
     }
 
     void OnTriggerExit(Collider other)
     {
-        collidingObject = null;
+        if (touched)
+        {
+            if (other.GetComponentInParent<GrabbableObject>())
+            {
+                touched = false;
+                collidingObject.GetComponent<GrabbableObject>().UnTouched(this.gameObject);
+                collidingObject = null;
+            }
+        }
     }
 
     void Update()
@@ -46,7 +60,7 @@ public class SteamVRObjectGrab : MonoBehaviour
             if (collidingObject)
                 GrabObject();
         }
-            
+
         if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Grip))// If release grip buttons and holding object, set to release
         {
             if (objectInHand)
@@ -56,10 +70,8 @@ public class SteamVRObjectGrab : MonoBehaviour
 
     private void GrabObject() // Picking up object and assigning objectInHand variable
     {
-
         objectInHand = collidingObject;
         objectInHand.transform.SetParent(this.transform);
-        objectInHand.GetComponent<Rigidbody>().isKinematic = true;
         objectInHand.GetComponent<GrabbableObject>().Grabbed(this.gameObject);
     }
 
@@ -69,4 +81,5 @@ public class SteamVRObjectGrab : MonoBehaviour
         objectInHand.transform.SetParent(initialParent);
         objectInHand.GetComponent<GrabbableObject>().Released(this.gameObject);
     }
+
 }

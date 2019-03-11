@@ -53,7 +53,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4993675072193000}
-  - component: {fileID: 54964048792506740}
   - component: {fileID: 114833621893074392}
   - component: {fileID: 114732342956396114}
   - component: {fileID: 114200546766522188}
@@ -147,21 +146,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252694982168850}
   m_Mesh: {fileID: 4300000, guid: ce9628ceb47ef61428adf149da13984e, type: 3}
---- !u!54 &54964048792506740
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978216798562994}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &114200546766522188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,6 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789182891fac6f846a8fac808cc88860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineOnTouch: 1
+  outlineMaterial: {fileID: 0}
   isGrabbedByLeftHand: 0
   isGrabbedByRightHand: 0
 --- !u!114 &114253596684236578
