@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineOnTouch: 1
-  outlineMaterial: {fileID: 0}
+  outlineMaterial: {fileID: 2100000, guid: f36fa11c44d9c274789fd4768d8857af, type: 2}
   isGrabbedByLeftHand: 0
   isGrabbedByRightHand: 0
 --- !u!114 &114860497539701782
