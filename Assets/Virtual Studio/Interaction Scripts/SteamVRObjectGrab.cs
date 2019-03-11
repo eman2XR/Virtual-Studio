@@ -46,7 +46,8 @@ public class SteamVRObjectGrab : MonoBehaviour
             if (other.GetComponentInParent<GrabbableObject>())
             {
                 touched = false;
-                collidingObject.GetComponent<GrabbableObject>().UnTouched(this.gameObject);
+                if(collidingObject)
+                    collidingObject.GetComponent<GrabbableObject>().UnTouched(this.gameObject);
                 collidingObject = null;
             }
         }
